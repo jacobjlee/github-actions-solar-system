@@ -17,7 +17,7 @@ jobs:
     name: Unit Testing
     strategy:
       matrix:
-        nodejs_version: [18, 19, 20]
+        nodejs_version: [18, 20]
         os: [ubuntu-latest, macos-latest]
         exclude:
           - nodejs_version: 18
@@ -39,6 +39,7 @@ jobs:
       run: npm test
 
     - name: Archive Test Results
+      if: always()
       uses: actions/upload-artifact@v3
       with:
         name: Mocha-Test-Results
